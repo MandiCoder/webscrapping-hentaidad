@@ -10,7 +10,8 @@ def command_start(app, msg):
 
 @app.on_message(filters.command("run"))
 def upload_images(app, msg):
-    DownloadPhotos(app, msg, 'https://hentaidad.com/popular/1').get_pages()
+    pagina = 1
+    DownloadPhotos(app, msg, f'https://hentaidad.com/popular/{pagina}').get_pages()
 
 @app.on_message()
 def ver_id(app, msg):
