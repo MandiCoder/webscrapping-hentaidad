@@ -28,15 +28,14 @@ class DownloadPhotos:
                 )
             for futuro in as_completed(futuros):
                 img_send.append(
-                    InputMediaPhoto(futuro.result(), caption=f"**{caption}**")
+                    InputMediaPhoto(futuro.result())
                 )
                 
         
         print("Enviando Imagenes...")
         sleep(5)
         ids = self.app.send_media_group(self.msg.chat.id, img_send[:10])
-        self.app.delete_messages(self.msg.chat.id, ids)
-        self.app.copy_media_group(ID_CHANNEL, self.msg.chat.id, ids[0].id, captions="single caption")
+        self.app.copy_media_group(ID_CHANNEL, self.msg.chat.id, ids[0].id, captions=f"**{caption.capitalize()}**")
     
     
     def download(self, url):
